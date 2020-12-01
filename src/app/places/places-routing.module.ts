@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 
 import { PlacesPage } from './places.page';
 
@@ -18,11 +18,6 @@ const routes: Routes = [
           {
             path: ':placeId',
             loadChildren: () => import('./discover/place-detail/place-detail.module').then(m => m.PlaceDetailPageModule)
-          },
-          {
-            path: '',
-            redirectTo: '/places/tabs/discover',
-            pathMatch: 'full'
           }
         ]
       },
@@ -46,6 +41,11 @@ const routes: Routes = [
             loadChildren: () => import('./offers/offer-bookings/offer-bookings.module').then(m => m.OfferBookingsPageModule)
           }
         ]
+      },
+      {
+        path: '',
+        redirectTo: '/places/tabs/discover',
+        pathMatch: 'full'
       }
     ]
   },
@@ -58,6 +58,6 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule],
+  exports: [RouterModule]
 })
-export class PlacesPageRoutingModule {}
+export class PlacesRoutingModule {}
